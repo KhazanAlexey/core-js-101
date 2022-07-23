@@ -208,7 +208,6 @@ function getRectangleString(width, height) {
   const body = (height > 2 ? `│${' '.repeat(width - 2)}│\n`.repeat(height - 2) : '');
   const footer = `└${'─'.repeat(width - 2)}┘\n`;
   return header + body + footer;
-
 }
 
 
@@ -237,11 +236,13 @@ function encodeToRot13(str) {
     let isSmallLetter = false;
     let isBigLetter = false;
 
-    if (letterChar > 96 && letterChar < 123) isSmallLetter = true;
-    else if (letterChar > 64 && letterChar < 91) isBigLetter = true;
+    if (letterChar > 96 && letterChar < 123) {
+      isSmallLetter = true;
+    } else if (letterChar > 64 && letterChar < 91) isBigLetter = true;
 
-    if (!isSmallLetter && !isBigLetter) resultStr += str[i];
-    else {
+    if (!isSmallLetter && !isBigLetter) {
+      resultStr += str[i];
+    } else {
       if (isSmallLetter) {
         if (letterResultChar > 122) letterResultChar = 96 + letterResultChar - 122;
       } else if (letterResultChar > 90) {
@@ -297,7 +298,7 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(value ) {
+function getCardId(value) {
   const map = new Map([['A♣', 0], ['2♣', 1], ['3♣', 2], ['4♣', 3], ['5♣', 4],
     ['6♣', 5], ['7♣', 6], ['8♣', 7], ['9♣', 8], ['10♣', 9], ['J♣', 10],
     ['Q♣', 11], ['K♣', 12], ['A♦', 13], ['2♦', 14], ['3♦', 15],
